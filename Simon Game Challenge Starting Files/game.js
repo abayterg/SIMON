@@ -26,11 +26,24 @@ function startOver(){
   gamePattern=[];
   userClickedPattern=[];
   level=0;
+  ;
 }
+
+$(document).click(function(e){
+  $(".btn").click(function(event) {
+      event.stopPropagation();
+  });
+    startOver();
+    $("h1").text("Starting")
+    setTimeout(function (){
+      nextSequence()},1000);
+
+  })
 
 $(document).keydown(function(e){
   if (e.key==="Enter"){
     startOver();
+    $("h1").text("Starting")
     setTimeout(function (){
       nextSequence()},1000);
     }
@@ -47,7 +60,7 @@ function nextSequence() {
       (function (i){
       setTimeout(function(){console.log(gamePattern[i]);
       animateButton(gamePattern[i]);
-      makeSound(gamePattern[i])},500*i)
+      makeSound(gamePattern[i])},700*i)
   })(i)
   }
 }
